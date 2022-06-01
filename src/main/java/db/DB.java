@@ -7,10 +7,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class DB {
 
+    private static final Logger log = Logger.getLogger(DB.class.getName());
+
     private static Connection conn = null;
+
+    private DB() {
+        //CONSTRUTOR VAZIO APONTADO PELO SONAR
+    }
 
     public static Connection getConnection() {
         if (conn == null) {
@@ -18,7 +25,7 @@ public class DB {
                 Properties props = loadProperties();
                 String url = props.getProperty("dburl");
                 conn = DriverManager.getConnection(url, props);
-                System.out.println("CONECTOU");
+                log.info("CONECTOU");
             } catch (SQLException e) {
                 throw new DBException(e.getMessage());
             }
