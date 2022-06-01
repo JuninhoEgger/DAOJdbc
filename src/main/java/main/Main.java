@@ -1,5 +1,6 @@
 package main;
 
+import model.dao.SellerDAO;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -11,6 +12,7 @@ import java.util.logging.Logger;
 import static db.DB.closeConnection;
 import static db.DB.getConnection;
 import static javax.swing.JOptionPane.showMessageDialog;
+import static model.dao.DAOFactory.createSellerDAO;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -24,6 +26,8 @@ public class Main {
 
         Seller seller = new Seller(21, "Bob", "bob@gmail.com", new Date(), 3000.0, department);
         showMessageDialog(null, seller);
+
+        SellerDAO sellerDAO = createSellerDAO();
 
     }
 }
