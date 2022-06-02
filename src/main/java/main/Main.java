@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import static db.DB.closeConnection;
 import static db.DB.getConnection;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import static model.dao.DAOFactory.createSellerDAO;
 
@@ -20,8 +21,7 @@ public class Main {
 
         SellerDAO sellerDAO = createSellerDAO();
         Seller seller = sellerDAO.findById(3);
-        showMessageDialog(null, seller);
-
+        showMessageDialog(null, seller, "TEST 1 = seller findById", INFORMATION_MESSAGE);
 
         closeConnection();
 
