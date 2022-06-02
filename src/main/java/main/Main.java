@@ -30,7 +30,7 @@ public class Main {
         List<Seller> sellers = sellerDAO.findByDepartment(department);
         StringBuilder response = new StringBuilder("VENDEDORES FILTRADOS POR DEPARTAMENTO\n");
         sellers.forEach(s -> response.append(s).append("\n"));
-        showMessageDialog(null, response, "TEST 1 = seller findById", INFORMATION_MESSAGE);
+        showMessageDialog(null, response, "TEST 2 = seller findByDepartment", INFORMATION_MESSAGE);
 
         closeConnection();
 
