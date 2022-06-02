@@ -1,5 +1,6 @@
 package main;
 
+import model.dao.DepartmentDAO;
 import model.dao.SellerDAO;
 import model.entities.Department;
 import model.entities.Seller;
@@ -14,6 +15,7 @@ import static db.DB.closeConnection;
 import static db.DB.getConnection;
 import static java.lang.Integer.parseInt;
 import static javax.swing.JOptionPane.*;
+import static model.dao.DAOFactory.createDepartmentDAO;
 import static model.dao.DAOFactory.createSellerDAO;
 
 public class Main {
@@ -48,6 +50,27 @@ public class Main {
 
         sellerDAO.deleteById(parseInt(showInputDialog(("INSIRA UM ID A SER DELETADO"))));
         showMessageDialog(null, "DELETADO COM SUCESSO!", "TEST 6 = seller delete", INFORMATION_MESSAGE);
+
+        DepartmentDAO departmentDAO = createDepartmentDAO();
+        Department department1 = new Department(null, "Cars");
+        departmentDAO.insert(department1);
+        showMessageDialog(null, "INSERIDO! Novo id: " + department1.getId(), "TEST 1 = department insert", INFORMATION_MESSAGE);
+
+        department1 = departmentDAO.findById(2);
+        showMessageDialog(null, "DEPARTAMENTO: " + department1, "TEST 2 = department findById", INFORMATION_MESSAGE);
+
+        department1 = departmentDAO.findById(1);
+        department1.setName("Notebook");
+        departmentDAO.update(department1);
+        showMessageDialog(null, "UPDATED COMPLETED!", "TEST 3 = department update", INFORMATION_MESSAGE);
+
+        departmentDAO.deleteById(parseInt(showInputDialog("INSIRA UM ID A SER DELETADO")));
+        showMessageDialog(null, "DELETADO COM SUCESSO", "TEST 4 = department delete", INFORMATION_MESSAGE);
+
+        List<Department> departments = departmentDAO.findAll();
+        StringBuilder departamentos = new StringBuilder("TODOS OS DEPARTAMENTOS\n");
+        departments.forEach(d -> departamentos.append(d.getName()).append("\n"));
+        showMessageDialog(null, departamentos, "TEST 5 = department findAll", INFORMATION_MESSAGE);
 
         closeConnection();
 
