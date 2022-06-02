@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 
 import static db.DB.closeConnection;
 import static db.DB.getConnection;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
+import static java.lang.Integer.parseInt;
+import static javax.swing.JOptionPane.*;
 import static model.dao.DAOFactory.createSellerDAO;
 
 public class Main {
@@ -45,6 +45,9 @@ public class Main {
         seller.setName("Martha Wayne");
         sellerDAO.update(seller);
         showMessageDialog(null, "UPDATED COMPLETED!", "TEST 5 = seller update", INFORMATION_MESSAGE);
+
+        sellerDAO.deleteById(parseInt(showInputDialog(("INSIRA UM ID A SER DELETADO"))));
+        showMessageDialog(null, "DELETADO COM SUCESSO!", "TEST 6 = seller delete", INFORMATION_MESSAGE);
 
         closeConnection();
 
