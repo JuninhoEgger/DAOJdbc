@@ -6,6 +6,7 @@ import model.entities.Seller;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -36,6 +37,9 @@ public class Main {
         sellers.forEach(s -> resposta.append(s).append("\n"));
         showMessageDialog(null, resposta, "TEST 3 = seller findAll", INFORMATION_MESSAGE);
 
+        seller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
+        sellerDAO.insert(seller);
+        showMessageDialog(null, "INSERIDO! Novo id: " + seller.getId(), "TEST 4 = seller insert", INFORMATION_MESSAGE);
 
         closeConnection();
 
