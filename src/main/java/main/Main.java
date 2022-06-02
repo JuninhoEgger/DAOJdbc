@@ -4,7 +4,6 @@ import model.dao.SellerDAO;
 import model.entities.Department;
 import model.entities.Seller;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -31,6 +30,12 @@ public class Main {
         StringBuilder response = new StringBuilder("VENDEDORES FILTRADOS POR DEPARTAMENTO\n");
         sellers.forEach(s -> response.append(s).append("\n"));
         showMessageDialog(null, response, "TEST 2 = seller findByDepartment", INFORMATION_MESSAGE);
+
+        sellers = sellerDAO.findAll();
+        StringBuilder resposta = new StringBuilder("TODOS OS VENDEDORES\n");
+        sellers.forEach(s -> resposta.append(s).append("\n"));
+        showMessageDialog(null, resposta, "TEST 3 = seller findAll", INFORMATION_MESSAGE);
+
 
         closeConnection();
 
