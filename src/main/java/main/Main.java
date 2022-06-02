@@ -41,6 +41,11 @@ public class Main {
         sellerDAO.insert(seller);
         showMessageDialog(null, "INSERIDO! Novo id: " + seller.getId(), "TEST 4 = seller insert", INFORMATION_MESSAGE);
 
+        seller = sellerDAO.findById(1);
+        seller.setName("Martha Wayne");
+        sellerDAO.update(seller);
+        showMessageDialog(null, "UPDATED COMPLETED!", "TEST 5 = seller update", INFORMATION_MESSAGE);
+
         closeConnection();
 
     }
