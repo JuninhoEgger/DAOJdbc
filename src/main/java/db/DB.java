@@ -1,14 +1,14 @@
 package db;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
-import java.util.logging.Logger;
 
+@Slf4j
 public class DB {
-
-    private static final Logger log = Logger.getLogger(DB.class.getName());
 
     private static Connection conn = null;
 

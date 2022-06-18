@@ -1,5 +1,6 @@
 package main;
 
+import lombok.extern.slf4j.Slf4j;
 import model.dao.DepartmentDAO;
 import model.dao.SellerDAO;
 import model.entities.Department;
@@ -9,7 +10,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 import static db.DB.closeConnection;
 import static db.DB.getConnection;
@@ -18,9 +18,9 @@ import static javax.swing.JOptionPane.*;
 import static model.dao.DAOFactory.createDepartmentDAO;
 import static model.dao.DAOFactory.createSellerDAO;
 
+@Slf4j
 public class Main {
     public static void main(String[] args) throws SQLException {
-        Logger log = Logger.getLogger(Main.class.getName());
         Connection conn = getConnection();
         log.info(conn.getCatalog());
 
