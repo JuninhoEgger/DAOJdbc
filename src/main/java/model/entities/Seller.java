@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Objects;
 
 import static java.lang.String.format;
+import static java.util.Objects.hash;
 
 public class Seller implements Serializable {
 
@@ -89,7 +90,7 @@ public class Seller implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return hash(id);
     }
 
     @Override

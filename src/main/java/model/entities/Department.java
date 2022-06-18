@@ -4,6 +4,8 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+import static java.util.Objects.hash;
+
 public class Department implements Serializable {
 
     @Serial
@@ -46,7 +48,7 @@ public class Department implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return hash(id);
     }
 
     @Override
