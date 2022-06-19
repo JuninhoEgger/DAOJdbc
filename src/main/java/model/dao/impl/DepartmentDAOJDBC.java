@@ -15,13 +15,7 @@ import static db.DB.closeResultSet;
 import static db.DB.closeStatement;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
-public class DepartmentDAOJDBC implements DepartmentDAO {
-
-    private final Connection conn;
-
-    public DepartmentDAOJDBC(Connection conn) {
-        this.conn = conn;
-    }
+public record DepartmentDAOJDBC(Connection conn) implements DepartmentDAO {
 
     @Override
     public void insert(Department department) {

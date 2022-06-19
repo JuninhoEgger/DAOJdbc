@@ -15,14 +15,9 @@ import static db.DB.closeResultSet;
 import static db.DB.closeStatement;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
-public class SellerDAOJDBC implements SellerDAO {
+public record SellerDAOJDBC(Connection conn) implements SellerDAO {
 
     private static final String DEPARTMENT_ID = "DepartmentId";
-    private final Connection conn;
-
-    public SellerDAOJDBC(Connection conn) {
-        this.conn = conn;
-    }
 
     @Override
     public void insert(Seller seller) {
