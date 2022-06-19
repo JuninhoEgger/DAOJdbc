@@ -13,7 +13,7 @@ public class DB {
     private static Connection conn = null;
 
     private DB() {
-        //CONSTRUTOR VAZIO APONTADO PELO SONAR
+        //CONSTRUTOR 1 VAZIO APONTADO PELO SONAR
     }
 
     public static Connection getConnection() {
