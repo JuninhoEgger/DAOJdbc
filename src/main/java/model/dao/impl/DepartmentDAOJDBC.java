@@ -18,7 +18,7 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 public record DepartmentDAOJDBC(Connection conn) implements DepartmentDAO {
 
     @Override
-    public void insert(Department department) {
+    public void insert(Department department) throws SQLException {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?)", RETURN_GENERATED_KEYS);
@@ -26,7 +26,7 @@ public record DepartmentDAOJDBC(Connection conn) implements DepartmentDAO {
 
             int rowsAffected = st.executeUpdate();
 
-            if (rowsAffected > 0) {
+            if (rowsAffected > 0 && !department.getName().equalsIgnoreCase("")) {
                 ResultSet rs = st.getGeneratedKeys();
                 if (rs.next()) {
                     department.setId(rs.getInt(1));
@@ -36,6 +36,9 @@ public record DepartmentDAOJDBC(Connection conn) implements DepartmentDAO {
                 throw new DBException("UNEXPECTED ERROR! NO ROWS AFFECTED!");
             }
         } catch (SQLException e) {
+            if (department.getName().equalsIgnoreCase("BOMBOM")) {
+                throw new SQLException("DEU RUIM");
+            }
             throw new DBException(e.getMessage());
         } finally {
             closeStatement(st);
